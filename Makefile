@@ -1,18 +1,23 @@
 CC = gcc
 CFLAGS = -Wall -g
-OBJ = main.o text_processing.o file_utils.o
+OBJ = main.o file_utils.o text_processing.o
 TARGET = sed_simplified
 
+# Цель по умолчанию
 all: $(TARGET)
 
+# Правило для сборки исполнимого файла
 $(TARGET): $(OBJ)
- $(CC) $(CFLAGS) -o $@ $(OBJ)
+<TAB>$(CC) $(CFLAGS) -o $@ $(OBJ)
 
+# Правила для компиляции исходных файлов
 %.o: %.c
- $(CC) $(CFLAGS) -c $<
+<TAB>$(CC) $(CFLAGS) -c $<
 
+# Удаление объектных файлов и исполняемого файла
 clean:
- rm -f $(OBJ) $(TARGET)
+<TAB>rm -f $(OBJ) $(TARGET)
 
+# Тестирование программы
 test:
- ./$(TARGET) test.txt -r "old" "new"
+<TAB>./$(TARGET) test.txt -r "old" "new"
